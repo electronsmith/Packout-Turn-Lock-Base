@@ -44,6 +44,10 @@ second_tab_inner_dia =70.15;
 
 first_tab_outer_dia = 0;
 
+first_tab_angle = 60;
+second_tab_angle = 32;
+third_tab_angle = 4;
+
 /*
 height = 12.75;
 a = height*tan(draft_angle);
@@ -172,29 +176,32 @@ tab_dia= 77.23;
         translate([-tab_dia/2,0,-first_tab_height/2])
         cube([tab_dia,tab_dia/2,2*first_tab_height]);
         
-        rotate([0,0,180-60])
+        rotate([0,0,180-first_tab_angle])
         translate([-tab_dia/2,0,-first_tab_height/2])
         cube([tab_dia,tab_dia/2,2*first_tab_height]);
 
+        //make inclined step
         translate([0,0,6])
-        rotate([60,0,180-60])
+        rotate([60,0,180-first_tab_angle])
         translate([-tab_dia/2,0,-first_tab_height/2])
         cube([tab_dia,tab_dia/2,2*first_tab_height]);
     }//difference
     
     translate([0,0,first_tab_height])
     difference(){
-        cylinder(h = second_tab_height-first_tab_height,d = tab_dia);
+        // added $dl to height to fix weird non-manifold error
+        cylinder(h = second_tab_height-first_tab_height+$dl,d = tab_dia);
         
         translate([-tab_dia/2,0,-second_tab_height/2])
         cube([tab_dia,tab_dia/2,2*second_tab_height]);
         
-        rotate([0,0,180-32])
+        rotate([0,0,180-second_tab_angle])
         translate([-tab_dia/2,0,-second_tab_height/2])
         cube([tab_dia,tab_dia/2,2*second_tab_height]);
         
+        //make_inclined step
         translate([0,0,0])
-        rotate([60,0,180-32])
+        rotate([60,0,180-second_tab_angle])
         translate([-tab_dia/2,0,-first_tab_height/2])
         cube([tab_dia,tab_dia/2,2*first_tab_height]);
 
@@ -207,7 +214,7 @@ tab_dia= 77.23;
         translate([-tab_dia/2,0,-total_height/2])
         cube([tab_dia,tab_dia/2,2*total_height]);
         
-        rotate([0,0,180-4])
+        rotate([0,0,180-third_tab_angle])
         translate([-tab_dia/2,0,-total_height/2])
         cube([tab_dia,tab_dia/2,2*total_height]);
     }//difference
