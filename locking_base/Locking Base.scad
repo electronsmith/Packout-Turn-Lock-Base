@@ -75,6 +75,8 @@ cup_cut_z = 70;
 /*******************************************************************************
 *
 *******************************************************************************/
+// Magnet Count
+magnet_count = 1; //[1,3]
 // Diameter of the base magnet
 magnet_dia = 52;
 
@@ -153,8 +155,14 @@ difference(){
     
     //Magnet cutout
     if(Part == "FULL CUP")
-        translate([0,0,-$dl])
-        cylinder(h=total_height-floor_thickness,d=magnet_dia);
+        if(magnet_count == 1)
+            translate([0,0,-$dl])
+            cylinder(h=total_height-floor_thickness,d=magnet_dia);
+        else
+            for(i=[0:120:360])
+                rotate([0,0,i+60])
+                translate([magnet_dia/2+3,0,-$dl])
+                cylinder(h=total_height-floor_thickness,d=magnet_dia);
     
     if(Part == "BASE ONLY")
         translate([0,0,-$dl])
