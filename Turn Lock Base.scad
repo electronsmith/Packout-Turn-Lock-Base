@@ -66,9 +66,9 @@ cup_height_adj = 0; //[-50:0.1:50]
 //Cup wall thickness
 cup_thickness = 3;
 
-cup_cut_dia = 173;
-cup_cut_x = 45;
-cup_cut_z = 70;
+cup_cut_dia = 170;
+cup_cut_x = 50;
+cup_cut_z = 65;
 
 
 /*[Magnet Parameters]*/
