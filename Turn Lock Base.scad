@@ -159,7 +159,7 @@ difference(){
             translate([0,0,-$dl])
             cylinder(h=total_height-floor_thickness,d=magnet_dia);
         else
-            for(i=[0:120:360])
+            for(i=[0:120:240])
                 rotate([0,0,i+60])
                 translate([magnet_dia/2+3,0,-$dl])
                 cylinder(h=total_height-floor_thickness,d=magnet_dia);
