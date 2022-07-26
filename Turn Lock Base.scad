@@ -15,7 +15,7 @@ $dl = 0.02;
 /*******************************************************************************
 *
 *******************************************************************************/
-Part = "FULL CUP"; //[BASE ONLY,FULL CUP]
+Part = "FULL CUP"; //[CAMERA BASE,FULL CUP]
 
 /*[Base Parameters]*/
 /*******************************************************************************
@@ -78,7 +78,7 @@ cup_cut_z = 65;
 // Magnet Count
 magnet_count = 1; //[1,3]
 // Diameter of the base magnet
-magnet_dia = 52;
+magnet_dia = 52; // [10:0.1:65]
 
 // Thickness of the cup floor (how much material covers the magnet)
 floor_thickness = 2;
@@ -164,7 +164,7 @@ difference(){
                 translate([magnet_dia/2+3,0,-$dl])
                 cylinder(h=total_height-floor_thickness,d=magnet_dia);
     
-    if(Part == "BASE ONLY")
+    if(Part == "CAMERA BASE")
         translate([0,0,-$dl])
         rotate([180,0,0])
         screw_hole();
